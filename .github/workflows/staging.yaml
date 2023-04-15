@@ -25,7 +25,8 @@ jobs:
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} | grep -o 'https://[^ ]*')
       - name: Comment deployment URL on commit
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_PAT }}
