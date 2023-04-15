@@ -9,4 +9,4 @@ jobs:
       - name: Verify secret
         run: |
           echo "Secret hash: $(echo ${{ secrets.VERCEL_TOKEN }} | sha256sum)"
-          echo "Vars: $(echo ${{ vars.DATABASE_URL }})"
+          echo "Vars: $(echo ${{ vars.DATABASE_URL }} | sha256sum)"
