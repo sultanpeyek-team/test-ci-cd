@@ -2,11 +2,6 @@ name: Vercel Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
-  DISCORD_CLIENT_SECRET: ${{ secrets.DISCORD_CLIENT_SECRET }}
-  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-  NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
 on:
   push:
     branches-ignore:
@@ -15,6 +10,14 @@ on:
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
+    environment:
+      name: preview
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
+      DISCORD_CLIENT_SECRET: ${{ secrets.DISCORD_CLIENT_SECRET }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
