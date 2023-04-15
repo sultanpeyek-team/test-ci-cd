@@ -27,6 +27,7 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: |
           DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} | grep -o 'https://[^ ]*')
+          echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
       - name: Comment deployment URL on commit
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_PAT }}
