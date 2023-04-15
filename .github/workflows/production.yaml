@@ -37,4 +37,4 @@ jobs:
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments \
-            -d "{\"body\":\"Production URL: https://testing-ci-cd-peyek.vercel.app\\nDeployment URL: $DEPLOYMENT_URL\"}"
+            -d "{\"body\":\"Production URL: https://test-ci-cd-peyek.vercel.app\\nDeployment URL: $DEPLOYMENT_URL\"}"
