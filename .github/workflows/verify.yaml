@@ -1,0 +1,11 @@
+name: Test Secret
+
+on: [push]
+
+jobs:
+  check_secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify secret
+        run: |
+          echo "Secret hash: $(echo ${{ secrets.VERCEL_TOKEN }} | sha256sum)"
